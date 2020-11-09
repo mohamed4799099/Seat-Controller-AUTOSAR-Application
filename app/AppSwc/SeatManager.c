@@ -70,18 +70,17 @@ static boolean IsMotorAdjustNeeded(SensorPositionType Position, SensorWeightType
 void SeatManager_SetHeight (void)
 {
 	MultiStateBtnType HeightBtnState;
-	Std_ReturnType status;
 	StepMotorStepType step;
 
-	status=Rte_Read_rpSeatCtrlBtns_HeightBtnState(&HeightBtnState);
+	(void)Rte_Read_rpSeatCtrlBtns_HeightBtnState(&HeightBtnState);
 
 	if(HeightBtnState == MULTI_STATE_BTN_MINUS)
 	{
-		status=Rte_Call_rpHeightMotor_Move(MOTOR_STEP_MINUS);
+		(void)Rte_Call_rpHeightMotor_Move(MOTOR_STEP_MINUS);
 	}
-	else if(HeightBtnState == MULTI_STATE_BTN_PLUS)
+	if(HeightBtnState == MULTI_STATE_BTN_PLUS)
 	{
-		status=Rte_Call_rpHeightMotor_Move(MOTOR_STEP_PLUS);
+		(void)Rte_Call_rpHeightMotor_Move(MOTOR_STEP_PLUS);
 	}
 }
 
