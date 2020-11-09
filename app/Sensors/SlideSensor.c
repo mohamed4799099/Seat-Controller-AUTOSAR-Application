@@ -7,18 +7,23 @@
 
 void SlideSensor_GetPosition (SensorPositionType* position)
 {
-	Std_ReturnType status;
+
 	IoPositionSensorReadingType position;
 
 	/* Server Call Points */
-	status = Rte_Call_rpIOGetSlide_IOGet(&position);
+	(void) Rte_Call_rpIOGetSlide_IOGet(&position);
 
-	if(position == 0)
+	if(position == 0){
 		*position = SENSOR_POSITION_STEP_1;
-	if(position > 0 && position <= 64)
+	}
+	else if(position > 0 && position <= 64){
 		*position = SENSOR_POSITION_STEP_1;
-	if(position > 64 && position <= 192)
+	}
+	else if(position > 64 && position <= 192){
 		*position = SENSOR_POSITION_STEP_2;
-	if(position > 192 && position <= 255)
+	}
+	else{
 		*position = SENSOR_POSITION_STEP_3;
+}
+
 }

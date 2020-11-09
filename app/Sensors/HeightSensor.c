@@ -7,10 +7,10 @@
 void HeightSensor_GetPosition (SensorPositionType* Position)
 {
 	IoPositionSensorReadingType position;
-	Std_ReturnType status;
+
 
 	/* Server Call Points */
-	status=Rte_Call_rpIOGetHeight_IOGet(&position);
+	(void)Rte_Call_rpIOGetHeight_IOGet(&position);
 
 	if(position == 0)
 	{

@@ -91,17 +91,17 @@ void SeatManager_SetIncline (void)
 {
 	MultiStateBtnType InclineBtnState;
 	StepMotorStepType step;
-	Std_ReturnType status;
 
-	status=Rte_Read_rpSeatCtrlBtns_InclineBtnState(&InclineBtnState);
+
+	(void)Rte_Read_rpSeatCtrlBtns_InclineBtnState(&InclineBtnState);
 
 	if(InclineBtnState == MULTI_STATE_BTN_MINUS)
 	{
-		status=Rte_Call_rpInclineMotor_Move(MOTOR_STEP_MINUS);
+		(void)Rte_Call_rpInclineMotor_Move(MOTOR_STEP_MINUS);
 	}
-	else if(InclineBtnState == MULTI_STATE_BTN_PLUS)
+	if(InclineBtnState == MULTI_STATE_BTN_PLUS)
 	{
-		status=Rte_Call_rpInclineMotor_Move(MOTOR_STEP_PLUS);
+		(void)Rte_Call_rpInclineMotor_Move(MOTOR_STEP_PLUS);
 	}
 }
 
@@ -111,18 +111,17 @@ void SeatManager_SetIncline (void)
 void SeatManager_SetSlide (void)
 {
 	MultiStateBtnType SlideBtnState;
-	Std_ReturnType status;
 	StepMotorStepType step;
 
-	status=Rte_Read_rpSeatCtrlBtns_SlideBtnState(&SlideBtnState);
+	(void)Rte_Read_rpSeatCtrlBtns_SlideBtnState(&SlideBtnState);
 
 	if(SlideBtnState == MULTI_STATE_BTN_MINUS)
 	{
-		status=Rte_Call_rpSlideMotor_Move(MOTOR_STEP_MINUS);
+		(void)Rte_Call_rpSlideMotor_Move(MOTOR_STEP_MINUS);
 	}
-	else if(SlideBtnState == MULTI_STATE_BTN_PLUS)
+	if(SlideBtnState == MULTI_STATE_BTN_PLUS)
 	{
-		status=Rte_Call_rpSlideMotor_Move(MOTOR_STEP_PLUS);
+		(void)Rte_Call_rpSlideMotor_Move(MOTOR_STEP_PLUS);
 	}
 }
 

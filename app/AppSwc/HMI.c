@@ -11,7 +11,7 @@ static MultiStateBtnType btnValueToState(uint8 value)
 	{
 		btnState = MULTI_STATE_BTN_MINUS;
 	}
-	else if(value == 2)
+	if(value == 2)
 	{
 		btnState = MULTI_STATE_BTN_PLUS;
 	}
@@ -67,26 +67,23 @@ void HMI_MainFunction (void)
 
 void HMI_SeatModeChanged (void)
 {
-    Std_ReturnType status;
+
 	SeatModeBtnType SeatModeBtn;
 	uint8 SeatCtrlMode = RTE_MODE_SeatCtrlMode_INIT;
 
-	status=Rte_Read_rpSeatModeBtn_SeatModeBtn(&SeatModeBtn);
+	(void)Rte_Read_rpSeatModeBtn_SeatModeBtn(&SeatModeBtn);
 
 	if(SeatModeBtn == SEAT_MODE_BTN_MANUAL)
 	{
 		SeatCtrlMode = RTE_MODE_SeatCtrlMode_MANUAL;
 	}
-	else if(SeatModeBtn == SEAT_MODE_BTN_AUTO)
+	if(SeatModeBtn == SEAT_MODE_BTN_AUTO)
 	{
 		SeatCtrlMode = RTE_MODE_SeatCtrlMode_AUTO;
 	}
-	else
-	{
-		/* Keep INIT */
-	}
 
-	status=Rte_Switch_ppSeatCtrlMode_SeatCtrlMode(SeatCtrlMode);
+
+	(void)Rte_Switch_ppSeatCtrlMode_SeatCtrlMode(SeatCtrlMode);
 }
 
 

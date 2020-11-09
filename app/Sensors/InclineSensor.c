@@ -6,11 +6,11 @@
 
 void InclineSensor_GetPosition (SensorPositionType* Position)
 {
-    Std_ReturnType status;
+
 	IoPositionSensorReadingType position;
 
 	/* Server Call Points */
-	status=Rte_Call_rpIOGetIncline_IOGet(&position);
+	(void)Rte_Call_rpIOGetIncline_IOGet(&position);
 
 	if(position == 0)
 	{
